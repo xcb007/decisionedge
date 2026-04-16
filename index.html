@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Business Analytics & Modelling with Excel</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0d1f3c;--navy2:#162a50;--gold:#c9a84c;--gold-light:#f0d080;--text:#1a1a2e;--muted:#4a5568;--light:#f7f8fc;--white:#ffffff;--border:#dde2ee}
+body{font-family:'Georgia',serif;color:var(--text);background:var(--white);line-height:1.7}
+.sans{font-family:'Arial',sans-serif}
+nav{background:var(--navy);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+.nav-logo{color:var(--gold);font-size:1rem;font-weight:bold;font-family:Arial,sans-serif;letter-spacing:.5px}
+.nav-cta{background:var(--gold);color:var(--navy);padding:.45rem 1.2rem;border-radius:4px;font-family:Arial,sans-serif;font-size:.85rem;font-weight:bold;cursor:pointer;border:none}
+.nav-cta:hover{background:var(--gold-light)}
+.hero{background:linear-gradient(135deg,var(--navy) 60%,var(--navy2) 100%);color:var(--white);padding:5rem 2rem 4rem;text-align:center}
+.hero-badge{display:inline-block;background:rgba(201,168,76,.15);border:1px solid var(--gold);color:var(--gold);font-family:Arial,sans-serif;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;padding:.35rem 1rem;border-radius:3px;margin-bottom:1.5rem}
+.hero h1{font-size:clamp(1.8rem,4vw,3rem);line-height:1.25;max-width:780px;margin:0 auto 1.2rem;font-weight:normal}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero p{font-family:Arial,sans-serif;font-size:1.05rem;color:rgba(255,255,255,.8);max-width:600px;margin:0 auto 2rem}
+.hero-cta{background:var(--gold);color:var(--navy);padding:.85rem 2.2rem;border-radius:4px;font-family:Arial,sans-serif;font-size:1rem;font-weight:bold;border:none;cursor:pointer;display:inline-block}
+.hero-cta:hover{background:var(--gold-light)}
+.hero-sub{font-family:Arial,sans-serif;font-size:.82rem;color:rgba(255,255,255,.5);margin-top:.75rem}
+.hero-stats{display:flex;justify-content:center;gap:3rem;margin-top:3rem;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat strong{display:block;font-size:1.7rem;color:var(--gold);font-family:Arial,sans-serif}
+.hero-stat span{font-family:Arial,sans-serif;font-size:.8rem;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.5px}
+section{padding:4rem 2rem}
+.container{max-width:900px;margin:0 auto}
+.section-label{font-family:Arial,sans-serif;font-size:.75rem;text-transform:uppercase;letter-spacing:2px;color:var(--gold);margin-bottom:.6rem}
+.section-title{font-size:clamp(1.4rem,3vw,2rem);color:var(--navy);margin-bottom:.8rem;font-weight:normal}
+.section-sub{font-family:Arial,sans-serif;font-size:.95rem;color:var(--muted);max-width:620px;margin-bottom:2.5rem}
+.divider{width:40px;height:3px;background:var(--gold);margin:1rem 0 1.5rem}
+.problem{background:var(--light)}
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem}
+.pain-card{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:4px;padding:1.2rem 1.4rem}
+.pain-card h4{font-family:Arial,sans-serif;font-size:.95rem;font-weight:bold;color:var(--navy);margin-bottom:.4rem}
+.pain-card p{font-family:Arial,sans-serif;font-size:.875rem;color:var(--muted)}
+.module-list{display:flex;flex-direction:column;gap:1rem}
+.module{display:flex;gap:1.2rem;align-items:flex-start;padding:1.2rem 1.4rem;border:1px solid var(--border);border-radius:4px;background:var(--white)}
+.module:hover{border-color:var(--gold)}
+.module-num{font-family:Arial,sans-serif;font-size:1.5rem;font-weight:bold;color:var(--gold);min-width:40px;line-height:1}
+.module h4{font-family:Arial,sans-serif;font-size:.95rem;font-weight:bold;color:var(--navy);margin-bottom:.3rem}
+.module p{font-family:Arial,sans-serif;font-size:.85rem;color:var(--muted)}
+.audience{background:var(--navy);color:var(--white)}
+.audience .section-title{color:var(--white)}
+.audience-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
+.audience-card{border:1px solid rgba(201,168,76,.3);border-radius:6px;padding:1.8rem;background:rgba(255,255,255,.04)}
+.audience-card h3{font-family:Arial,sans-serif;font-size:1rem;color:var(--gold);margin-bottom:1rem;font-weight:bold}
+.audience-card ul{list-style:none;font-family:Arial,sans-serif;font-size:.875rem;color:rgba(255,255,255,.8)}
+.audience-card ul li{padding:.35rem 0;border-bottom:1px solid rgba(255,255,255,.07);padding-left:1rem;position:relative}
+.audience-card ul li::before{content:'›';position:absolute;left:0;color:var(--gold)}
+.approach{background:var(--light)}
+.approach-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;margin-top:2rem}
+.step{text-align:center;padding:1.5rem 1rem}
+.step-icon{width:52px;height:52px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-family:Arial,sans-serif;font-size:1.2rem;font-weight:bold;color:var(--gold)}
+.step h4{font-family:Arial,sans-serif;font-size:.9rem;font-weight:bold;color:var(--navy);margin-bottom:.4rem}
+.step p{font-family:Arial,sans-serif;font-size:.82rem;color:var(--muted)}
+.instructor-inner{display:flex;gap:2.5rem;align-items:flex-start;flex-wrap:wrap}
+.instructor-avatar{width:120px;height:120px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;color:var(--gold);font-family:Arial,sans-serif;font-size:2rem;font-weight:bold;flex-shrink:0;border:3px solid var(--gold)}
+.instructor-text h3{font-size:1.3rem;color:var(--navy);margin-bottom:.25rem;font-weight:normal}
+.instructor-text .role{font-family:Arial,sans-serif;font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+.instructor-text p{font-family:Arial,sans-serif;font-size:.9rem;color:var(--text);margin-bottom:.8rem}
+.creds{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem}
+.cred{font-family:Arial,sans-serif;font-size:.78rem;background:var(--light);border:1px solid var(--border);color:var(--navy);padding:.3rem .75rem;border-radius:3px}
+.testimonials{background:var(--light)}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
+.testi{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:1.4rem}
+.testi-stars{color:var(--gold);font-size:.9rem;margin-bottom:.6rem}
+.testi-text{font-size:.9rem;color:var(--text);margin-bottom:1rem;font-style:italic}
+.testi-author{font-family:Arial,sans-serif;font-size:.8rem;font-weight:bold;color:var(--navy)}
+.testi-role{font-family:Arial,sans-serif;font-size:.75rem;color:var(--muted)}
+.faq-list{display:flex;flex-direction:column;gap:.75rem;margin-top:2rem}
+.faq-item{border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.faq-q{font-family:Arial,sans-serif;font-size:.9rem;font-weight:bold;color:var(--navy);padding:1rem 1.2rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:var(--white)}
+.faq-q:hover{background:var(--light)}
+.faq-q span{color:var(--gold);font-size:1.1rem;font-weight:normal;transition:transform .2s}
+.faq-a{font-family:Arial,sans-serif;font-size:.875rem;color:var(--muted);padding:0 1.2rem 1rem;background:var(--white);display:none}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-q span{transform:rotate(45deg);display:inline-block}
+.final-cta{background:var(--navy);text-align:center;padding:5rem 2rem;color:var(--white)}
+.final-cta h2{font-size:clamp(1.5rem,3vw,2.2rem);margin-bottom:1rem;font-weight:normal}
+.final-cta h2 em{color:var(--gold);font-style:normal}
+.final-cta p{font-family:Arial,sans-serif;font-size:.95rem;color:rgba(255,255,255,.7);max-width:520px;margin:0 auto 2rem}
+.cta-btn{background:var(--gold);color:var(--navy);padding:1rem 2.5rem;border-radius:4px;font-family:Arial,sans-serif;font-size:1rem;font-weight:bold;border:none;cursor:pointer;display:inline-block;margin-bottom:.75rem}
+.cta-btn:hover{background:var(--gold-light)}
+.cta-fine{font-family:Arial,sans-serif;font-size:.8rem;color:rgba(255,255,255,.4)}
+footer{background:#080f1e;color:rgba(255,255,255,.4);text-align:center;padding:1.5rem;font-family:Arial,sans-serif;font-size:.8rem}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(5,15,35,.7);z-index:999;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.active{display:flex}
+.modal{background:var(--white);border-radius:8px;width:100%;max-width:580px;max-height:90vh;overflow-y:auto;position:relative}
+.modal-header{background:var(--navy);padding:1.4rem 1.6rem;border-radius:8px 8px 0 0;display:flex;justify-content:space-between;align-items:center}
+.modal-header h3{color:var(--white);font-family:Arial,sans-serif;font-size:1rem;font-weight:bold}
+.modal-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.4rem;cursor:pointer;line-height:1;padding:.2rem .4rem}
+.modal-close:hover{color:var(--gold)}
+.modal-tabs{display:flex;border-bottom:1px solid var(--border);background:var(--light)}
+.modal-tab{flex:1;padding:.75rem .5rem;font-family:Arial,sans-serif;font-size:.78rem;font-weight:bold;text-align:center;cursor:pointer;color:var(--muted);border:none;background:none;border-bottom:2px solid transparent;transition:all .15s}
+.modal-tab:hover{color:var(--navy)}
+.modal-tab.active{color:var(--navy);border-bottom:2px solid var(--gold);background:var(--white)}
+.modal-body{padding:1.6rem}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+/* config row */
+.config-row{background:var(--light);border:1px solid var(--border);border-radius:6px;padding:1rem 1.2rem;margin-bottom:1.2rem;font-family:Arial,sans-serif;font-size:.83rem;color:var(--muted)}
+.config-row label{display:block;font-weight:bold;color:var(--navy);margin-bottom:.4rem;font-size:.8rem}
+.config-row input{width:100%;border:1px solid var(--border);border-radius:4px;padding:.5rem .75rem;font-size:.85rem;font-family:Arial,sans-serif;outline:none}
+.config-row input:focus{border-color:var(--gold)}
+.config-row .hint{font-size:.75rem;color:var(--muted);margin-top:.4rem}
+
+/* Calendly panel */
+#calendly-frame-wrap{border:1px solid var(--border);border-radius:6px;overflow:hidden;min-height:200px;display:flex;align-items:center;justify-content:center;background:var(--light);font-family:Arial,sans-serif;font-size:.875rem;color:var(--muted)}
+#calendly-frame-wrap iframe{width:100%;height:480px;border:none;display:none}
+
+/* Contact form */
+.cf-group{margin-bottom:1rem}
+.cf-group label{display:block;font-family:Arial,sans-serif;font-size:.8rem;font-weight:bold;color:var(--navy);margin-bottom:.35rem}
+.cf-group input,.cf-group textarea,.cf-group select{width:100%;border:1px solid var(--border);border-radius:4px;padding:.55rem .75rem;font-family:Arial,sans-serif;font-size:.875rem;outline:none}
+.cf-group input:focus,.cf-group textarea:focus{border-color:var(--gold)}
+.cf-group textarea{resize:vertical;min-height:90px}
+.submit-btn{background:var(--navy);color:var(--white);border:none;padding:.7rem 1.8rem;border-radius:4px;font-family:Arial,sans-serif;font-size:.9rem;font-weight:bold;cursor:pointer;width:100%}
+.submit-btn:hover{background:var(--navy2)}
+.form-success{display:none;background:#f0faf4;border:1px solid #a8d5b5;border-radius:6px;padding:1rem 1.2rem;font-family:Arial,sans-serif;font-size:.875rem;color:#2d6a4f;text-align:center;margin-top:1rem}
+
+/* WhatsApp & Email panels */
+.channel-card{border:1px solid var(--border);border-radius:6px;padding:1.2rem;margin-bottom:1rem;font-family:Arial,sans-serif}
+.channel-card h4{font-size:.9rem;font-weight:bold;color:var(--navy);margin-bottom:.4rem}
+.channel-card p{font-size:.82rem;color:var(--muted);margin-bottom:1rem}
+.channel-btn{display:inline-block;padding:.65rem 1.4rem;border-radius:4px;font-family:Arial,sans-serif;font-size:.875rem;font-weight:bold;cursor:pointer;border:none;text-decoration:none}
+.wa-btn{background:#25d366;color:#fff}
+.wa-btn:hover{background:#1ebe5c}
+.em-btn{background:var(--navy);color:#fff}
+.em-btn:hover{background:var(--navy2)}
+.ext-btn{background:var(--gold);color:var(--navy)}
+.ext-btn:hover{background:var(--gold-light)}
+
+/* Settings cog */
+.settings-toggle{position:fixed;bottom:1.2rem;right:1.2rem;width:44px;height:44px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:998;border:2px solid var(--gold);font-size:1.1rem}
+.settings-panel{display:none;position:fixed;bottom:4rem;right:1.2rem;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:1.2rem;width:280px;z-index:997;box-shadow:0 4px 20px rgba(0,0,0,.12);font-family:Arial,sans-serif}
+.settings-panel.open{display:block}
+.settings-panel h4{font-size:.85rem;font-weight:bold;color:var(--navy);margin-bottom:.9rem}
+.settings-panel label{display:block;font-size:.75rem;color:var(--muted);margin-bottom:.25rem;margin-top:.6rem}
+.settings-panel input{width:100%;border:1px solid var(--border);border-radius:4px;padding:.4rem .6rem;font-size:.8rem;font-family:Arial,sans-serif;outline:none}
+.settings-panel input:focus{border-color:var(--gold)}
+.settings-save{background:var(--gold);color:var(--navy);border:none;padding:.5rem 1rem;border-radius:4px;font-family:Arial,sans-serif;font-size:.8rem;font-weight:bold;cursor:pointer;width:100%;margin-top:.9rem}
+.saved-msg{font-size:.75rem;color:green;text-align:center;margin-top:.4rem;display:none}
+</style>
+</head>
+<body>
+
+<!-- SETTINGS COG -->
+<div class="settings-toggle" title="Configure booking links" onclick="toggleSettings()">&#9881;</div>
+<div class="settings-panel" id="settingsPanel">
+  <h4>Configure your booking details</h4>
+  <label>Calendly URL</label>
+  <input id="cfg-calendly" placeholder="https://calendly.com/yourname/30min"/>
+  <label>WhatsApp number (with country code)</label>
+  <input id="cfg-wa" placeholder="+919876543210"/>
+  <label>Your email address</label>
+  <input id="cfg-email" placeholder="you@example.com"/>
+  <label>External booking page URL</label>
+  <input id="cfg-ext" placeholder="https://your-booking-page.com"/>
+  <button class="settings-save" onclick="saveSettings()">Save settings</button>
+  <div class="saved-msg" id="savedMsg">Settings saved!</div>
+</div>
+
+<!-- BOOKING MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Book Your Free Discovery Call</h3>
+      <button class="modal-close" onclick="closeModal()">&#215;</button>
+    </div>
+    <div class="modal-tabs">
+      <button class="modal-tab active" onclick="switchTab('calendly')">Calendly</button>
+      <button class="modal-tab" onclick="switchTab('form')">Contact Form</button>
+      <button class="modal-tab" onclick="switchTab('whatsapp')">WhatsApp</button>
+      <button class="modal-tab" onclick="switchTab('ext')">Email / Link</button>
+    </div>
+    <div class="modal-body">
+
+      <!-- TAB 1: CALENDLY -->
+      <div class="tab-panel active" id="tab-calendly">
+        <div class="config-row" id="calendly-config-hint">
+          <label>Calendly is not configured yet</label>
+          Click the &#9881; settings icon (bottom-right) to add your Calendly URL. Once added, your live calendar will appear here.
+        </div>
+        <div id="calendly-frame-wrap">
+          <span id="calendly-placeholder">Your Calendly calendar will appear here.</span>
+          <iframe id="calendly-iframe" src="" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <!-- TAB 2: CONTACT FORM -->
+      <div class="tab-panel" id="tab-form">
+        <div class="cf-group">
+          <label>Full name</label>
+          <input type="text" id="cf-name" placeholder="Your name"/>
+        </div>
+        <div class="cf-group">
+          <label>Email address</label>
+          <input type="email" id="cf-email" placeholder="you@example.com"/>
+        </div>
+        <div class="cf-group">
+          <label>Your background</label>
+          <select id="cf-bg">
+            <option value="">Select one...</option>
+            <option>Management student (MBA/PGDM)</option>
+            <option>Finance / analytics professional</option>
+            <option>Consultant</option>
+            <option>Business owner</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="cf-group">
+          <label>What do you want to achieve?</label>
+          <textarea id="cf-msg" placeholder="Tell me briefly about your goals and current Excel / analytics level..."></textarea>
+        </div>
+        <button class="submit-btn" onclick="submitForm()">Send enquiry</button>
+        <div class="form-success" id="formSuccess">
+          Thank you! Your enquiry has been received. Expect a reply within 24 hours.
+        </div>
+      </div>
+
+      <!-- TAB 3: WHATSAPP -->
+      <div class="tab-panel" id="tab-whatsapp">
+        <div class="channel-card">
+          <h4>Message directly on WhatsApp</h4>
+          <p>Click below to open a pre-filled WhatsApp message. We'll schedule your free call over chat.</p>
+          <button class="channel-btn wa-btn" onclick="openWhatsApp()">Open WhatsApp</button>
+        </div>
+        <div class="config-row" id="wa-config-hint" style="display:none">
+          <label>WhatsApp not configured</label>
+          Add your WhatsApp number in the &#9881; settings icon to activate this button.
+        </div>
+      </div>
+
+      <!-- TAB 4: EMAIL / EXTERNAL -->
+      <div class="tab-panel" id="tab-ext">
+        <div class="channel-card">
+          <h4>Send an email</h4>
+          <p>Prefer email? Click below to open a pre-addressed email in your mail client.</p>
+          <button class="channel-btn em-btn" onclick="openEmail()">Send an email</button>
+        </div>
+        <div class="channel-card" style="margin-top:1rem">
+          <h4>External booking page</h4>
+          <p>If you use a separate booking tool (Topmate, Cal.com, Google Calendar, etc.), visit your page directly.</p>
+          <button class="channel-btn ext-btn" onclick="openExternal()">Go to booking page</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">ExcelAnalytics Pro</div>
+  <button class="nav-cta" onclick="openModal()">Book a Free Call</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Advanced Curriculum · Problem-First Approach</div>
+  <h1>Stop Learning Excel.<br>Start <em>Solving Business Problems.</em></h1>
+  <p class="sans">A rigorous curriculum in Business Analytics & Financial Modelling — built for management students and seasoned practitioners who are done with surface-level training.</p>
+  <button class="hero-cta" onclick="openModal()">Book Your Free Discovery Call</button>
+  <div class="hero-sub sans">No commitment · 30 minutes · For serious learners only</div>
+  <div class="hero-stats">
+    <div class="hero-stat"><strong>500+</strong><span>Practitioners Trained</span></div>
+    <div class="hero-stat"><strong>12+</strong><span>Modules</span></div>
+    <div class="hero-stat"><strong>Real</strong><span>Business Cases</span></div>
+    <div class="hero-stat"><strong>Live</strong><span>Problem-First Sessions</span></div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="container">
+    <div class="section-label">The Problem</div>
+    <h2 class="section-title">Most Excel training prepares you for tests, not decisions.</h2>
+    <div class="divider"></div>
+    <p class="section-sub sans">If you've spent hours on tutorials but still hesitate when a real business question lands on your desk, you're not alone.</p>
+    <div class="pain-grid">
+      <div class="pain-card"><h4>Feature-first, not problem-first</h4><p>You learn VLOOKUP before you understand what question it answers. Tools without context don't build judgment.</p></div>
+      <div class="pain-card"><h4>No business model thinking</h4><p>Courses teach spreadsheets, not how a business actually works. You end up with pretty models with no managerial insight.</p></div>
+      <div class="pain-card"><h4>Too basic for advanced users</h4><p>Online courses reset to zero. If you already know the basics, you waste hours before getting to anything useful.</p></div>
+      <div class="pain-card"><h4>No real-world case depth</h4><p>Toy datasets don't build confidence. Real decisions involve messy data, ambiguous questions, and stakeholder pressure.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRICULUM -->
+<section>
+  <div class="container">
+    <div class="section-label">Curriculum</div>
+    <h2 class="section-title">What you will master</h2>
+    <div class="divider"></div>
+    <p class="section-sub sans">Every module opens with a real business problem. The tools and techniques follow — never the other way around.</p>
+    <div class="module-list">
+      <div class="module"><div class="module-num">01</div><div><h4>Business Problem Framing & Analytical Thinking</h4><p>Translate vague business questions into structured analytical problems. Define the right output before building anything.</p></div></div>
+      <div class="module"><div class="module-num">02</div><div><h4>Data Architecture & Structuring in Excel</h4><p>Design models that are auditable, scalable, and defensible. Learn why structure prevents 90% of modelling errors.</p></div></div>
+      <div class="module"><div class="module-num">03</div><div><h4>Advanced Business Analytics Techniques</h4><p>Scenario analysis, sensitivity tables, Monte Carlo simulation, and regression — applied to real operating decisions.</p></div></div>
+      <div class="module"><div class="module-num">04</div><div><h4>Financial Modelling for Business Decisions</h4><p>Build integrated P&L, balance sheet, and cash flow models from scratch — linked, dynamic, and boardroom-ready.</p></div></div>
+      <div class="module"><div class="module-num">05</div><div><h4>Valuation & Investment Frameworks</h4><p>DCF, comparable analysis, and LBO modelling with a practitioner's lens — not a textbook walkthrough.</p></div></div>
+      <div class="module"><div class="module-num">06</div><div><h4>Dashboard Design & Communicating Insights</h4><p>Turn analytical outputs into decision-ready visuals. Learn the discipline of telling the story behind the numbers.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHOM -->
+<section class="audience">
+  <div class="container">
+    <div class="section-label" style="color:var(--gold)">Who It's For</div>
+    <h2 class="section-title">Built for two kinds of serious learners</h2>
+    <div class="divider"></div>
+    <div class="audience-grid">
+      <div class="audience-card"><h3>Management Students</h3><ul><li>MBA, PGDM, or finance programme students</li><li>Preparing for internships or placements</li><li>Want consulting or investment banking roles</li><li>Need modelling skills beyond coursework</li><li>Ready to learn at a practitioner's pace</li></ul></div>
+      <div class="audience-card"><h3>Advanced Practitioners</h3><ul><li>Finance managers, analysts, or consultants</li><li>Already comfortable with Excel basics</li><li>Need structured, rigorous model-building skills</li><li>Work with real P&Ls, budgets, or valuations</li><li>Want a framework, not just more functions</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="approach">
+  <div class="container">
+    <div class="section-label">Methodology</div>
+    <h2 class="section-title">Why the problem-first approach works</h2>
+    <div class="divider"></div>
+    <p class="section-sub sans">Every session mirrors how decisions are made in the real world — you start with a question, not a function.</p>
+    <div class="approach-steps">
+      <div class="step"><div class="step-icon">01</div><h4>Real Problem</h4><p>Each module opens with a genuine business scenario — no dummy datasets.</p></div>
+      <div class="step"><div class="step-icon">02</div><h4>Analytical Frame</h4><p>Before touching Excel, we structure the problem and define what good output looks like.</p></div>
+      <div class="step"><div class="step-icon">03</div><h4>Tool Selection</h4><p>The right Excel technique is introduced because it solves the problem — not as a syllabus item.</p></div>
+      <div class="step"><div class="step-icon">04</div><h4>Build & Iterate</h4><p>You build the model live, make decisions with it, and stress-test it under different assumptions.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTRUCTOR -->
+<section>
+  <div class="container">
+    <div class="section-label">Your Instructor</div>
+    <h2 class="section-title">Learn from a practitioner, not just a teacher</h2>
+    <div class="divider"></div>
+    <div class="instructor-inner">
+      <div class="instructor-avatar">YN</div>
+      <div class="instructor-text">
+        <h3>Your Name Here</h3>
+        <div class="role sans">Business Analytics Coach · Former [Role] at [Company]</div>
+        <p>With over [X] years of hands-on experience in business modelling, financial analysis, and decision support, I have worked with companies ranging from early-stage startups to Fortune 500 enterprises.</p>
+        <p>I created this curriculum because I kept seeing the same gap: smart professionals who knew Excel but froze when the business question was ambiguous. This programme is designed to close that gap — permanently.</p>
+        <div class="creds"><span class="cred">MBA / [Degree]</span><span class="cred">[X]+ Years Industry Experience</span><span class="cred">500+ Students Trained</span><span class="cred">Ex-[Company / Role]</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-label">Testimonials</div>
+    <h2 class="section-title">What practitioners say</h2>
+    <div class="divider"></div>
+    <div class="testi-grid">
+      <div class="testi"><div class="testi-stars">★★★★★</div><p class="testi-text">"This is the first Excel course that actually taught me to think like an analyst. The problem-first approach changed how I structure every model I build now."</p><div class="testi-author">Rohan M.</div><div class="testi-role sans">Finance Manager, FMCG company</div></div>
+      <div class="testi"><div class="testi-stars">★★★★★</div><p class="testi-text">"I went into my MBA summer internship confident building three-statement models from scratch. My mentors were genuinely impressed. Worth every rupee."</p><div class="testi-author">Priya S.</div><div class="testi-role sans">MBA Student, IIM [X]</div></div>
+      <div class="testi"><div class="testi-stars">★★★★★</div><p class="testi-text">"Unlike generic certifications, this programme forces you to confront messy, real-world cases. My decision-making with data has become far more rigorous."</p><div class="testi-author">Arjun K.</div><div class="testi-role sans">Senior Consultant, Strategy firm</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Common questions answered</h2>
+    <div class="divider"></div>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is this suitable if I already know Excel well? <span>+</span></div><div class="faq-a">Yes — this programme is specifically designed for people who are past the basics. The focus is on analytical thinking, model design, and business judgement, not Excel functions in isolation.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What format does the programme take? <span>+</span></div><div class="faq-a">Sessions are conducted live, with real business cases worked through in real time. This is not a pre-recorded video course — it is an interactive, practitioner-led programme.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How is this different from online Excel courses? <span>+</span></div><div class="faq-a">Online courses teach Excel features. This curriculum teaches analytical thinking using Excel as the vehicle. Every technique is introduced in the context of a real decision that needs to be made.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is the time commitment? <span>+</span></div><div class="faq-a">Details depend on the cohort and format you enrol in — we will discuss this on your discovery call. Programmes are designed to be intensive but manageable alongside a full-time role or MBA programme.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What do I need before booking a call? <span>+</span></div><div class="faq-a">Just bring your goals and your current level. The discovery call is a genuine conversation — no sales pressure. If the programme isn't the right fit, I'll tell you directly.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2>Ready to build <em>real analytical capability?</em></h2>
+  <p class="sans">Book a free 30-minute discovery call. We'll talk about where you are, what you need, and whether this programme is the right next step.</p>
+  <button class="cta-btn" onclick="openModal()">Book Your Free Discovery Call</button>
+  <div class="cta-fine sans">No obligation · Limited spots per cohort · Serious learners only</div>
+</section>
+
+<footer>&copy; 2026 ExcelAnalytics Pro · All rights reserved</footer>
+
+<script>
+var cfg={calendly:'',wa:'',email:'',ext:''};
+
+function openModal(){document.getElementById('modalOverlay').classList.add('active')}
+function closeModal(){document.getElementById('modalOverlay').classList.remove('active')}
+function closeModalOutside(e){if(e.target===document.getElementById('modalOverlay'))closeModal()}
+
+function switchTab(id){
+  document.querySelectorAll('.modal-tab').forEach((t,i)=>{
+    t.classList.remove('active');
+    if(['calendly','form','whatsapp','ext'][i]===id)t.classList.add('active');
+  });
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+}
+
+function toggleSettings(){
+  document.getElementById('settingsPanel').classList.toggle('open');
+}
+
+function saveSettings(){
+  cfg.calendly=document.getElementById('cfg-calendly').value.trim();
+  cfg.wa=document.getElementById('cfg-wa').value.trim();
+  cfg.email=document.getElementById('cfg-email').value.trim();
+  cfg.ext=document.getElementById('cfg-ext').value.trim();
+  // Calendly
+  var frame=document.getElementById('calendly-iframe');
+  var placeholder=document.getElementById('calendly-placeholder');
+  var hint=document.getElementById('calendly-config-hint');
+  if(cfg.calendly){
+    frame.src=cfg.calendly;
+    frame.style.display='block';
+    placeholder.style.display='none';
+    hint.style.display='none';
+  }else{
+    frame.style.display='none';
+    placeholder.style.display='block';
+    hint.style.display='block';
+  }
+  document.getElementById('savedMsg').style.display='block';
+  setTimeout(()=>{document.getElementById('savedMsg').style.display='none';document.getElementById('settingsPanel').classList.remove('open')},1500);
+}
+
+function openWhatsApp(){
+  var num=cfg.wa.replace(/\D/g,'');
+  if(!num){alert('Please add your WhatsApp number in the settings (gear icon, bottom-right).');return;}
+  var msg=encodeURIComponent("Hi! I came across your Business Analytics & Modelling curriculum and I'd like to book a free discovery call.");
+  window.open('https://wa.me/'+num+'?text='+msg,'_blank');
+}
+
+function openEmail(){
+  var em=cfg.email||'your@email.com';
+  var sub=encodeURIComponent('Enquiry: Free Discovery Call – Business Analytics Curriculum');
+  var body=encodeURIComponent('Hi,\n\nI came across your Business Analytics & Modelling with Excel curriculum and would like to book a free discovery call.\n\nMy name:\nMy background:\nWhat I hope to achieve:\n\nLooking forward to hearing from you.');
+  window.open('mailto:'+em+'?subject='+sub+'&body='+body);
+}
+
+function openExternal(){
+  var url=cfg.ext;
+  if(!url){alert('Please add your external booking page URL in the settings (gear icon, bottom-right).');return;}
+  window.open(url,'_blank');
+}
+
+function submitForm(){
+  var n=document.getElementById('cf-name').value.trim();
+  var e=document.getElementById('cf-email').value.trim();
+  var m=document.getElementById('cf-msg').value.trim();
+  if(!n||!e){alert('Please fill in your name and email.');return;}
+  document.getElementById('formSuccess').style.display='block';
+  document.getElementById('cf-name').value='';
+  document.getElementById('cf-email').value='';
+  document.getElementById('cf-msg').value='';
+  document.getElementById('cf-bg').value='';
+}
+
+function toggleFaq(el){
+  var item=el.parentElement;
+  var isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!isOpen)item.classList.add('open');
+}
+</script>
+</body>
+</html>
