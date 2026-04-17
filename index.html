@@ -3,205 +3,163 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DecisionEdge — Analytics Coaching</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>DecisionEdge — Business Analytics &amp; Modelling</title>
 <style>
-:root{--bg:#07090F;--bg2:#0D1018;--bg3:#111520;--acc:#D4860A;--acc2:rgba(212,134,10,0.1);--acc3:rgba(212,134,10,0.18);--t:#E8EAF0;--t2:#7B8494;--t3:#3D4454;--bdr:rgba(255,255,255,0.07);--bdr2:rgba(255,255,255,0.12)}
-*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F6F4EF;
+  --bg2:#EDEAE4;
+  --bg3:#E2DDD6;
+  --acc:#2E6E53;
+  --acc-t:rgba(46,110,83,0.07);
+  --acc-b:rgba(46,110,83,0.22);
+  --t:#141F1B;
+  --t2:#3F5248;
+  --t3:#7A9188;
+  --bdr:rgba(0,0,0,0.1);
+  --bdr2:rgba(0,0,0,0.16)
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--t);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body{font-family:'Calibri','Trebuchet MS','Segoe UI',sans-serif;background:var(--bg);color:var(--t);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
 a{text-decoration:none;color:inherit}
-.w{max-width:840px;margin:0 auto;padding:0 2rem}
+.w{max-width:860px;margin:0 auto;padding:0 2rem}
 section{padding:4.5rem 2rem}
-p{color:var(--t2);font-size:15px;line-height:1.7}
+h1{font-size:clamp(2rem,5vw,2.85rem);font-weight:700;line-height:1.12;letter-spacing:-.02em;margin-bottom:1.1rem;color:var(--t)}
+h2{font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;line-height:1.2;letter-spacing:-.015em;margin-bottom:.6rem;color:var(--t)}
+h3{font-size:1rem;font-weight:700;margin-bottom:.3rem;color:var(--t)}
+p{color:var(--t2);font-size:15px;line-height:1.72}
 hr{border:none;border-top:1px solid var(--bdr);margin:0}
 
-/* Nav */
-nav{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2rem;border-bottom:1px solid var(--bdr);position:sticky;top:0;background:rgba(7,9,15,0.92);backdrop-filter:blur(12px);z-index:99}
-.logo{font-size:1rem;font-weight:600;letter-spacing:-0.01em}.logo em{color:var(--acc);font-style:normal}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2rem;border-bottom:1px solid var(--bdr);position:sticky;top:0;background:rgba(246,244,239,.96);backdrop-filter:blur(14px);z-index:99}
+.logo{font-size:1.05rem;font-weight:700;letter-spacing:-.01em;color:var(--t)}.logo em{color:var(--acc);font-style:normal}
+.btn-a{display:inline-block;background:var(--acc);color:#fff;padding:9px 20px;border-radius:5px;font-size:13.5px;font-weight:700;font-family:inherit;cursor:pointer;border:none;transition:opacity .15s}
+.btn-a:hover{opacity:.83}
+.btn-b{display:inline-block;background:transparent;color:var(--t);padding:9px 20px;border-radius:5px;font-size:13.5px;font-weight:600;font-family:inherit;border:1.5px solid var(--bdr2);transition:border-color .15s;cursor:pointer}
+.btn-b:hover{border-color:var(--acc)}
 
-/* Buttons */
-.btn-a{display:inline-block;background:var(--acc);color:#07090F;padding:10px 22px;border-radius:6px;font-size:13.5px;font-weight:600;cursor:pointer;border:none;font-family:inherit;transition:opacity .15s}
-.btn-a:hover{opacity:.85}
-.btn-b{display:inline-block;background:transparent;color:var(--t);padding:10px 22px;border-radius:6px;font-size:13.5px;font-weight:500;border:1px solid var(--bdr2);transition:border-color .15s}
-.btn-b:hover{border-color:rgba(255,255,255,0.25)}
+.lbl{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);margin-bottom:1rem}
 
-/* Labels */
-.lbl{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);margin-bottom:1.1rem}
+.curr-list{margin-top:2rem;border:1.5px solid var(--bdr2);border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.cr{display:flex;align-items:flex-start;gap:1.25rem;padding:1.2rem 1.5rem;border-bottom:1px solid var(--bdr);transition:background .12s}
+.cr:last-child{border-bottom:none}
+.cr:nth-child(odd){background:#fff}
+.cr:nth-child(even){background:var(--bg2)}
+.cr:hover{background:var(--bg3)}
+.cn{font-size:11.5px;font-weight:700;color:var(--acc);min-width:22px;margin-top:3px;letter-spacing:.03em}
+.cc h3{font-size:14.5px;margin-bottom:4px}.cc p{font-size:13.5px;line-height:1.6}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
+.tag{font-size:11px;color:var(--acc);background:var(--acc-t);border:1px solid var(--acc-b);border-radius:3px;padding:2px 8px}
 
-/* Headings */
-h1{font-size:clamp(2.1rem,5vw,3rem);font-weight:600;line-height:1.12;letter-spacing:-.025em;margin-bottom:1.1rem}
-h2{font-size:clamp(1.45rem,3vw,1.9rem);font-weight:600;line-height:1.2;letter-spacing:-.015em;margin-bottom:.65rem}
-h3{font-size:.95rem;font-weight:600;margin-bottom:.3rem;color:var(--t)}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5px;background:var(--bdr2);border:1.5px solid var(--bdr2);border-radius:10px;overflow:hidden;margin-top:2rem;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.tc{background:#fff;padding:1.35rem 1.5rem;transition:background .12s}.tc:hover{background:var(--bg2)}
+.ti{width:30px;height:30px;border-radius:6px;background:var(--acc-t);border:1px solid var(--acc-b);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--acc);margin-bottom:.875rem}
+.tc h3{font-size:13.5px}.tc p{font-size:12.5px;margin-top:3px;line-height:1.6}
 
-/* Hero */
-.hero-sub{font-size:1.05rem;color:var(--t2);max-width:520px;margin-bottom:2rem;line-height:1.72}
-.hero-note{font-size:12.5px;color:var(--t3);margin-top:1.1rem}
-.hero-note span{margin:0 .4rem}
+.aud-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem;margin-top:1.75rem}
+.aud-card{padding:1.2rem 1.4rem;background:#fff;border:1.5px solid var(--bdr2);border-radius:9px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.aud-card h3{font-size:13.5px;margin-bottom:.35rem}.aud-card p{font-size:13px}
 
-/* Gate section */
-.gate{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--bdr);border-radius:10px;overflow:hidden;margin-top:2rem}
-.gate-col{padding:1.75rem}
-.gate-col:first-child{background:var(--bg2);border-right:1px solid var(--bdr)}
-.gate-col:last-child{background:var(--bg3)}
-.gate-lbl{font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem}
-.gate-lbl.no{color:var(--t3)}.gate-lbl.yes{color:var(--acc)}
-ul.gate-list{list-style:none;display:flex;flex-direction:column;gap:9px}
-ul.gate-list li{font-size:13.5px;color:var(--t2);padding-left:1.25rem;position:relative;line-height:1.5}
-ul.gate-list.yes li{color:var(--t)}
-ul.gate-list li::before{content:'—';position:absolute;left:0;color:var(--t3)}
-ul.gate-list.yes li::before{content:'→';color:var(--acc)}
+blockquote{padding:1.35rem 1.75rem;border-left:3px solid var(--acc);background:#fff;border-radius:0 8px 8px 0;margin-top:2rem;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+blockquote p{color:var(--t);font-style:italic;font-size:15px;line-height:1.72}
 
-/* Outcomes */
-.outcomes{border:1px solid var(--bdr);border-radius:10px;overflow:hidden;margin-top:2rem}
-.oc{display:flex;align-items:flex-start;gap:1.25rem;padding:1.2rem 1.5rem;border-bottom:1px solid var(--bdr)}
-.oc:last-child{border-bottom:none}
-.oc:nth-child(odd){background:var(--bg2)}.oc:nth-child(even){background:var(--bg)}
-.oc-num{font-size:11.5px;font-weight:600;color:var(--acc);min-width:20px;margin-top:3px;opacity:.75}
-.oc h3{font-size:14px;margin-bottom:3px}
-.oc p{font-size:13px;line-height:1.6}
-
-/* Stats */
-.stats{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--bdr);border-radius:10px;overflow:hidden;margin-top:2rem}
-.stat{background:var(--bg2);padding:1.5rem;text-align:center;border-right:1px solid var(--bdr)}
-.stat:last-child{border-right:none}
-.stat big{display:block;font-size:2.25rem;font-weight:600;color:var(--t);letter-spacing:-.03em;line-height:1}
-.stat small{font-size:12.5px;color:var(--t2);display:block;margin-top:.375rem}
-blockquote{margin-top:2.25rem;padding:1.5rem 1.75rem;border-left:2px solid var(--acc);background:var(--acc2);border-radius:0 8px 8px 0}
-blockquote p{color:var(--t);font-style:italic;font-size:15px;line-height:1.7}
-
-/* CTA */
 .cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.25rem;align-items:start}
-.cta-box{background:var(--bg2);border:1px solid var(--bdr);border-radius:10px;overflow:hidden}
-.cta-head{padding:1.2rem 1.5rem;border-bottom:1px solid var(--bdr)}
-.cta-head h3{font-size:15px}.cta-head p{font-size:13px;margin-top:3px}
-.cta-body{padding:1.5rem}
-input{width:100%;padding:10px 13px;background:var(--bg);border:1px solid var(--bdr2);border-radius:7px;font-size:13.5px;font-family:inherit;color:var(--t);outline:none;margin-bottom:10px;transition:border-color .15s}
+.cta-box{background:#fff;border:1.5px solid var(--bdr2);border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.ch{padding:1.1rem 1.4rem;border-bottom:1px solid var(--bdr)}.ch h3{font-size:14.5px}.ch p{font-size:13px;margin-top:3px}
+.cb{padding:1.4rem}
+input{width:100%;padding:9px 13px;background:var(--bg);border:1.5px solid var(--bdr2);border-radius:6px;font-size:13.5px;font-family:'Calibri','Trebuchet MS',sans-serif;color:var(--t);outline:none;margin-bottom:9px;transition:border-color .15s}
 input::placeholder{color:var(--t3)}
-input:focus{border-color:rgba(212,134,10,.5)}
+input:focus{border-color:var(--acc)}
+.done{display:none;padding:12px;background:var(--acc-t);border:1.5px solid var(--acc-b);border-radius:6px;font-size:13.5px;color:var(--acc);font-weight:600;text-align:center;margin-top:.5rem}
 .note{font-size:11.5px;color:var(--t3);text-align:center;margin-top:.75rem}
-.done{display:none;padding:12px;background:var(--acc3);border:1px solid rgba(212,134,10,.25);border-radius:7px;font-size:13.5px;color:var(--acc);text-align:center}
 
-/* Footer */
-footer{padding:1.75rem 2rem;border-top:1px solid var(--bdr);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+footer{padding:1.75rem 2rem;border-top:1.5px solid var(--bdr2);background:var(--bg2);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 
-/* Responsive */
-@media(max-width:640px){
-  .gate,.cta-grid,.stats{grid-template-columns:1fr}
-  .gate-col:first-child{border-right:none;border-bottom:1px solid var(--bdr)}
-  .stat{border-right:none;border-bottom:1px solid var(--bdr)}.stat:last-child{border-bottom:none}
+@media(max-width:660px){
+  .cta-grid{grid-template-columns:1fr}
+  .tools-grid{grid-template-columns:1fr 1fr}
   nav{padding:.9rem 1.25rem}
-  section{padding:3.5rem 1.25rem}
+  section{padding:3.25rem 1.25rem}
   .w{padding:0 1.25rem}
-  h1{font-size:2rem}
 }
+@media(max-width:440px){.tools-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
-<!-- Nav -->
 <nav>
   <div class="logo">Decision<em>Edge</em></div>
-  <a href="#cta" class="btn-a">Book a call</a>
+  <a href="#enrol" class="btn-a">Book a call</a>
 </nav>
 
 <!-- Hero -->
 <section style="padding:6rem 2rem 5rem">
-  <div class="w" style="max-width:760px">
-    <p class="lbl">Business Analytics · Coaching Programme</p>
-    <h1>Stop producing analysis.<br>Start moving decisions.</h1>
-    <p class="hero-sub">A high-commitment, 16-hour coaching programme that teaches the judgment layer above Excel and AI — the part that determines your career, and the part that cannot be automated.</p>
+  <div class="w" style="max-width:740px">
+    <p class="lbl">Business Analytics &amp; Modelling · Module Zero</p>
+    <h1>The thinking skills<br>your tools can't replicate.</h1>
+    <p style="font-size:1.05rem;max-width:520px;margin-bottom:2rem">A 16-hour programme in business analytics and modelling that teaches the judgment layer above Excel and AI — how to frame problems, question data, and turn analysis into decisions that stick.</p>
     <div style="display:flex;gap:.875rem;flex-wrap:wrap">
-      <a href="#cta" class="btn-a">Book a free intro call</a>
-      <a href="#outcomes" class="btn-b">See the outcomes</a>
+      <a href="#enrol" class="btn-a">Book a free intro call</a>
+      <a href="#curriculum" class="btn-b">See the curriculum</a>
     </div>
-    <p class="hero-note">MBA students and working professionals<span>·</span>India pricing<span>·</span>Limited seats per cohort</p>
+    <p style="font-size:13px;color:var(--t3);margin-top:1.25rem">For MBA students, recent graduates, and analytics practitioners &nbsp;·&nbsp; No statistics background required</p>
   </div>
 </section>
 
 <hr>
 
-<!-- Gate: who it's for -->
-<section style="padding:4rem 2rem">
+<!-- Curriculum -->
+<section id="curriculum" style="padding:4rem 2rem;background:var(--bg2)">
   <div class="w">
-    <p class="lbl">Before you proceed</p>
-    <h2 style="max-width:500px">This programme is not for everyone.</h2>
-    <p style="max-width:520px">We are direct about who will benefit and who will not. If the right column describes you, read on. If the left column does, this is not the right moment.</p>
-    <div class="gate">
-      <div class="gate-col">
-        <p class="gate-lbl no">This is not for you if</p>
-        <ul class="gate-list">
-          <li>You want a certificate to put on LinkedIn</li>
-          <li>You expect AI to do your thinking</li>
-          <li>You want Excel shortcuts and quick tips</li>
-          <li>You cannot commit 16 focused hours</li>
-          <li>You want your assumptions confirmed</li>
-        </ul>
-      </div>
-      <div class="gate-col">
-        <p class="gate-lbl yes">This is for you if</p>
-        <ul class="gate-list yes">
-          <li>You want to be the person who frames the problem</li>
-          <li>You want AI working for you, not the other way around</li>
-          <li>You want your recommendations to actually land</li>
-          <li>You are preparing for a role where stakes are real</li>
-          <li>You are willing to be challenged</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr>
-
-<!-- Outcomes -->
-<section id="outcomes" style="padding:4rem 2rem">
-  <div class="w">
-    <p class="lbl">What you will leave with</p>
-    <h2>Six concrete capabilities. No theory left on the shelf.</h2>
-    <p style="max-width:500px">Not concepts you discuss and forget. Specific skills you will apply the following Monday.</p>
-    <div class="outcomes">
-      <div class="oc">
-        <span class="oc-num">01</span>
-        <div>
-          <h3>Frame any decision before touching the data</h3>
-          <p>A nine-question framing protocol and "what would have to be true?" thinking that structures every problem before analysis begins.</p>
+    <p class="lbl">The curriculum</p>
+    <h2>Six sessions. One complete analytical mind.</h2>
+    <p style="max-width:520px">Each session pairs a core framework with a live Excel lab and an AI demonstration — showing exactly what tools can do, and where your judgment remains irreplaceable.</p>
+    <div class="curr-list">
+      <div class="cr">
+        <span class="cn">01</span>
+        <div class="cc">
+          <h3>The Anatomy of Good Decisions</h3>
+          <p>What a decision really is — and how to structure one before analysis begins. A nine-question framing checklist, "what would have to be true?" thinking, and reversible vs. irreversible choices.</p>
+          <div class="tags"><span class="tag">Decision framing</span><span class="tag">WWHTBT</span><span class="tag">Decision types</span></div>
         </div>
       </div>
-      <div class="oc">
-        <span class="oc-num">02</span>
-        <div>
-          <h3>Generate and test hypotheses before looking at results</h3>
-          <p>Replace data fishing with hypothesis-driven analysis. Build MECE issue trees. Move from symptoms to root causes, every time.</p>
+      <div class="cr">
+        <span class="cn">02</span>
+        <div class="cc">
+          <h3>Asking Better Questions</h3>
+          <p>Replace data fishing with hypothesis-driven analysis. The four types of analytical questions, MECE issue trees, and the 5 Whys — so every analysis moves from symptom to root cause.</p>
+          <div class="tags"><span class="tag">Hypothesis thinking</span><span class="tag">MECE issue trees</span><span class="tag">5 Whys</span></div>
         </div>
       </div>
-      <div class="oc">
-        <span class="oc-num">03</span>
-        <div>
-          <h3>Audit AI-generated analysis for traps and false confidence</h3>
-          <p>Apply a structured Red Flag Checker to any dataset or AI output. Identify survivorship bias, false precision, and overfitting on sight.</p>
+      <div class="cr">
+        <span class="cn">03</span>
+        <div class="cc">
+          <h3>Thinking Critically About Data</h3>
+          <p>Learn to question every number before trusting it. The five analytical traps, model skepticism, the smell test, and how to communicate uncertainty instead of projecting false confidence.</p>
+          <div class="tags"><span class="tag">Five analytical traps</span><span class="tag">Model skepticism</span><span class="tag">Smell test</span></div>
         </div>
       </div>
-      <div class="oc">
-        <span class="oc-num">04</span>
-        <div>
-          <h3>Communicate findings that change decisions, not just inform them</h3>
-          <p>Lead with the answer. Pyramid Principle structure. A one-pager that fits inside a senior stakeholder's 60-second window.</p>
+      <div class="cr">
+        <span class="cn">04</span>
+        <div class="cc">
+          <h3>The Human Edge in an AI World</h3>
+          <p>A clear-eyed view of what AI does well and what it cannot do. Live side-by-side comparison of AI output vs. structured analyst thinking — and exactly where your judgment adds irreplaceable value.</p>
+          <div class="tags"><span class="tag">AI capabilities</span><span class="tag">Value stack</span><span class="tag">Live AI demo</span></div>
         </div>
       </div>
-      <div class="oc">
-        <span class="oc-num">05</span>
-        <div>
-          <h3>Build six professional-grade Excel tools you will use on the job</h3>
-          <p>Decision Framing Dashboard, Hypothesis Tracker, Issue Tree Builder, Red Flag Checker, Communication Template, and Personal Playbook.</p>
+      <div class="cr">
+        <span class="cn">05</span>
+        <div class="cc">
+          <h3>Communication &amp; Influence</h3>
+          <p>Analysis nobody acts on is worthless. The Pyramid Principle, the analytical story arc, and how to tailor findings so they reach the right person, in the right format, at the right moment.</p>
+          <div class="tags"><span class="tag">Pyramid Principle</span><span class="tag">Analytical storytelling</span><span class="tag">Managing up</span></div>
         </div>
       </div>
-      <div class="oc">
-        <span class="oc-num">06</span>
-        <div>
-          <h3>Know exactly where you stand on the AI value stack — and how to move up</h3>
-          <p>A personal AI collaboration protocol that keeps you in the judgment seat as tools get faster and more capable.</p>
+      <div class="cr">
+        <span class="cn">06</span>
+        <div class="cc">
+          <h3>Building Your Analytical Practice</h3>
+          <p>Develop real intuition through deliberate practice. Career positioning on the value stack, domain expertise strategies, and your personal AI collaboration protocol going forward.</p>
+          <div class="tags"><span class="tag">Intuition building</span><span class="tag">Career positioning</span><span class="tag">AI protocol</span></div>
         </div>
       </div>
     </div>
@@ -210,81 +168,105 @@ footer{padding:1.75rem 2rem;border-top:1px solid var(--bdr);display:flex;align-i
 
 <hr>
 
-<!-- Programme brief -->
-<section style="padding:4rem 2rem;background:var(--bg2)">
+<!-- Tools -->
+<section id="tools" style="padding:4rem 2rem;background:var(--bg)">
   <div class="w">
-    <p class="lbl">The programme</p>
-    <h2>Rigorous. Practical. Built for the AI era.</h2>
-    <p style="max-width:540px">Not a recorded course. Not a slide deck. A live coaching programme in small groups where you work on real decisions throughout.</p>
-    <div class="stats">
-      <div class="stat"><big>16</big><small>hours of live instruction</small></div>
-      <div class="stat"><big>6</big><small>sessions with Excel labs + AI demos</small></div>
-      <div class="stat"><big>6</big><small>tools built and yours to keep</small></div>
+    <p class="lbl">What you build</p>
+    <h2>Six Excel tools. Yours to keep.</h2>
+    <p style="max-width:500px">Built during the programme, not after. Real instruments that go straight into your work from day one — not exercises you file away.</p>
+    <div class="tools-grid">
+      <div class="tc"><div class="ti">01</div><h3>Decision Framing Dashboard</h3><p>Structures any problem before analysis begins. Use it before opening any dataset.</p></div>
+      <div class="tc"><div class="ti">02</div><h3>Hypothesis Tracker</h3><p>Forces hypothesis-first thinking. Tracks what is confirmed, rejected, and still open.</p></div>
+      <div class="tc"><div class="ti">03</div><h3>Issue Tree Builder</h3><p>Breaks complex problems into MECE branches with priority and status tracking.</p></div>
+      <div class="tc"><div class="ti">04</div><h3>Red Flag Checker</h3><p>Audits any dataset or AI output for analytical traps. Returns a clear risk rating.</p></div>
+      <div class="tc"><div class="ti">05</div><h3>Insight Communication Template</h3><p>A one-pager that leads with the answer — built for a senior audience's 60-second window.</p></div>
+      <div class="tc"><div class="ti">06</div><h3>Personal Analytics Playbook</h3><p>Your career positioning, prediction journal, and AI collaboration protocol — reviewed quarterly.</p></div>
     </div>
     <blockquote>
-      <p>"AI can run your analysis in seconds. It cannot frame the question, exercise judgment, or take responsibility for the answer. DecisionEdge teaches the part that cannot be automated — and the part that determines who gets trusted in a boardroom."</p>
+      <p>"AI can run your analysis in seconds. It cannot frame the question, exercise judgment, or take responsibility for the answer. This programme teaches the part that cannot be automated."</p>
     </blockquote>
   </div>
 </section>
 
 <hr>
 
-<!-- CTA -->
-<section id="cta" style="padding:4rem 2rem">
+<!-- Audience -->
+<section style="padding:3.5rem 2rem;background:var(--bg2)">
   <div class="w">
-    <p class="lbl">Next step</p>
-    <h2>One conversation. No obligation.</h2>
-    <p style="max-width:500px">Book a 30-minute call to see if this programme is the right fit for your goals. Or join the waitlist for cohort dates and early access.</p>
+    <p class="lbl">Who this is for</p>
+    <h2>New-age MBA students, graduates,<br>and working practitioners.</h2>
+    <div class="aud-grid">
+      <div class="aud-card">
+        <h3>MBA students &amp; recent graduates</h3>
+        <p>You have the frameworks. This builds the judgment layer you need before the job pressure arrives.</p>
+      </div>
+      <div class="aud-card">
+        <h3>Analytics practitioners</h3>
+        <p>You already know Excel. This puts you upstream of AI — framing problems and owning recommendations.</p>
+      </div>
+      <div class="aud-card">
+        <h3>Business and strategy professionals</h3>
+        <p>You work with data and decisions daily. This sharpens the thinking that makes both more rigorous.</p>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--t3);margin-top:1.25rem;font-style:italic">No prior statistics background required. Microsoft Excel required.</p>
+  </div>
+</section>
+
+<hr>
+
+<!-- CTA -->
+<section id="enrol" style="padding:4rem 2rem;background:var(--bg)">
+  <div class="w">
+    <p class="lbl">Get started</p>
+    <h2>One conversation first.</h2>
+    <p style="max-width:460px">Book a 30-minute intro call to see if the programme fits where you are and where you want to go. Or join the waitlist for the next cohort.</p>
     <div class="cta-grid">
       <div class="cta-box">
-        <div class="cta-head">
-          <h3>Book a free intro call</h3>
-          <p>30 minutes. Honest conversation. No sales pitch.</p>
-        </div>
-        <div class="cta-body">
-          <!-- Replace the src URL with your Calendly link: https://calendly.com/yourusername/30min -->
-          <iframe src="https://calendly.com/YOUR_CALENDLY_LINK"
-            width="100%" height="440" frameborder="0"
-            style="display:block;border-radius:6px;background:#fff">
-          </iframe>
-          <p class="note">Replace src with your Calendly URL before publishing</p>
+        <div class="ch"><h3>Book a free intro call</h3><p>30 minutes. Straight talk. No obligation.</p></div>
+        <div class="cb">
+          <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+          <!-- Replace YOUR_CALENDLY_LINK with e.g. yourusername/30min -->
+          <div class="calendly-inline-widget"
+            data-url="https://calendly.com/YOUR_CALENDLY_LINK?hide_gdpr_banner=1&primary_color=2e6e53"
+            style="min-width:240px;height:660px">
+          </div>
+          <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+          <p class="note">Replace YOUR_CALENDLY_LINK before publishing</p>
         </div>
       </div>
       <div class="cta-box">
-        <div class="cta-head">
-          <h3>Join the waitlist</h3>
-          <p>Cohort dates and pricing. One email. No spam.</p>
-        </div>
-        <div class="cta-body" id="wl-form">
-          <input type="text" id="wl-name" placeholder="Your name">
-          <input type="email" id="wl-email" placeholder="Email address">
-          <input type="text" id="wl-role" placeholder="Current role (e.g. MBA student, analyst)">
-          <button class="btn-a" style="width:100%;padding:12px;font-size:14px" onclick="joinWL()">Join the waitlist</button>
-          <div class="done" id="wl-done">You are on the list. We will be in touch when the next cohort opens.</div>
-          <p class="note" style="margin-top:1rem">Wire to Mailchimp / ConvertKit before going live</p>
+        <div class="ch"><h3>Join the waitlist</h3><p>Cohort dates and programme details. One email.</p></div>
+        <div class="cb" id="wl">
+          <input type="text" id="wn" placeholder="Your name">
+          <input type="email" id="we" placeholder="Email address">
+          <input type="text" id="wr" placeholder="Current role (e.g. MBA student, analyst)">
+          <button class="btn-a" style="width:100%;padding:11px;font-size:14px" onclick="doWL()">Join the waitlist</button>
+          <div class="done" id="wd">You are on the list. We will be in touch when the next cohort opens.</div>
+          <p class="note" style="margin-top:.875rem">Connect to Mailchimp or ConvertKit before publishing</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Footer -->
 <footer>
   <div class="logo">Decision<em>Edge</em></div>
-  <p style="font-size:13px;color:var(--t3)">For analysts who think before they calculate.</p>
+  <p style="font-size:13px;color:var(--t3)">Business Analytics &amp; Modelling · Module Zero · 16 hours</p>
   <div style="display:flex;gap:1.5rem">
-    <a href="#outcomes" style="font-size:13px;color:var(--t3)">Outcomes</a>
-    <a href="#cta" style="font-size:13px;color:var(--t3)">Book</a>
+    <a href="#curriculum" style="font-size:13px;color:var(--t2)">Curriculum</a>
+    <a href="#tools" style="font-size:13px;color:var(--t2)">Tools</a>
+    <a href="#enrol" style="font-size:13px;color:var(--t2)">Enrol</a>
   </div>
 </footer>
 
 <script>
-function joinWL(){
-  const e=document.getElementById('wl-email').value.trim();
-  if(!e){alert('Please enter your email.');return;}
-  ['wl-name','wl-email','wl-role'].forEach(id=>document.getElementById(id).style.display='none');
-  document.querySelector('#wl-form button').style.display='none';
-  document.getElementById('wl-done').style.display='block';
+function doWL(){
+  const e=document.getElementById('we').value.trim();
+  if(!e){alert('Please enter your email address.');return;}
+  ['wn','we','wr'].forEach(id=>document.getElementById(id).style.display='none');
+  document.querySelector('#wl button').style.display='none';
+  document.getElementById('wd').style.display='block';
 }
 </script>
 </body>
